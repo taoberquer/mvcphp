@@ -20,6 +20,10 @@ function getRoutes()
         'controller'=> "User",
         'action'=> "get"
     ],
+    '/get-post-utilisateur' => [
+        'controller'=> "User",
+        'action'=> "getUserPost"
+    ],
     '/utilisateur'=> [
         'controller'=> "user",
         'action'=> "default"

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\View;
+use App\Managers\PostManager;
 use App\Models\User;
 use App\Forms\RegisterType;
 use App\Managers\UserManager;
@@ -19,6 +20,15 @@ class UserController extends Controller
     public function addAction()
     {
         echo "User add";
+    }
+
+    public function getUserPostAction(array $params)
+    {
+        $postManager = new PostManager();
+
+        $post = $postManager->getUserPost($params['id']);
+
+        var_dump($post);
     }
 
     public function getAction($params)

@@ -15,7 +15,9 @@
   controller: "user"
   action: "default"
 
-
+/utilisateur-post:
+  controller: "user"
+  action: "getUserPost"
 
 
 /se-connecter:
