@@ -12,6 +12,10 @@ class Post extends Model
 
     protected $author;
 
+    protected $relations = [
+        'author' => User::class,
+    ];
+
     public function setId(int $id)
     {
         $this->id = $id;
@@ -29,8 +33,6 @@ class Post extends Model
 
     public function initRelation(): array
     {
-        return [
-            'author' => User::class,
-        ];
+        return $this->relations;
     }
 }

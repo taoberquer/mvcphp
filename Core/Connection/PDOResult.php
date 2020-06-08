@@ -14,9 +14,20 @@ class PDOResult implements ResultInterface
         $this->statement = $statement;
     }
 
-    public function getArrayResult(): array
+    public function getArrayResult(string $className = null): array
     {
-        return $this->statement->fetchAll();
+        $result = $this->statement->fetchAll();
+        if ($className != null)
+        {
+            $newResult = [];
+            foreach ($result as $item)
+            {
+                $newResult[] = (new $className)->hydrate($item);
+            }
+            $result = $newResult;
+        }
+
+        return $result;
     }
 
     public function getOneOrNullResult(): ?array

@@ -17,6 +17,12 @@ class Model implements \JsonSerializable
         $className = get_class($this);
         $articleObj = new $className();
         foreach ($row as $key => $value) {
+            if (method_exists($articleObj ,'initRelation') && in_array($key, $articleObj->initRelation()))
+            {
+                $articleObj->initRelation()[$key];
+                $manager = new 'App\\Managers\\' . $articleObj->initRelation()[$key] . 'Manager';
+                $value = $manager->find($value);
+            }
 
             $method = 'set'.$key;
             if (method_exists($articleObj, $method)) {
