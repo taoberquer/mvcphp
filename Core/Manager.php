@@ -21,6 +21,11 @@ class Manager
             $this->connection = new PDOConnection();
     }
 
+    protected function getConnection(): PDOConnection
+    {
+        return $this->connection;
+    }
+
 
     public function save($objectToSave)
     {

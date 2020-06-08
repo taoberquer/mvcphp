@@ -15,7 +15,7 @@ class PostManager extends Manager {
 
     public function getUserPost(int $id)
     {
-        return (new QueryBuilder())
+        return (new QueryBuilder($this->getConnection()))
             ->select('p.*, u.*')
             ->from('nfoz_posts', 'p')
             ->join('nfoz_users', 'u')

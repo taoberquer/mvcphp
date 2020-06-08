@@ -28,7 +28,8 @@ class QueryBuilder
 
     public function from(string $table, string $alias): QueryBuilder
     {
-        $this->query .= 'from ' . $table . ' as ' . $alias . ' ';
+        $this->alias = $alias;
+        $this->query .= 'from ' . $table . ' as ' . $this->alias . ' ';
         return $this;
     }
 
@@ -61,6 +62,7 @@ class QueryBuilder
     public function addToQuery(string $query): QueryBuilder
     {
         $this->query .= ' ' . $query;
+
         return $this;
     }
 

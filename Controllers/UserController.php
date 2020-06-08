@@ -28,6 +28,7 @@ class UserController extends Controller
 
         $post = $postManager->getUserPost($params['id']);
 
+        echo '<pre>';
         var_dump($post);
     }
 
